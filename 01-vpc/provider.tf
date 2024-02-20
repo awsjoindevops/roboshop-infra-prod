@@ -7,10 +7,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "awsjoindevops-state-dev"
+    bucket = "awsjoindevops-state-prod"
     key    = "vpc"
     region = "us-east-1"
-    dynamodb_table = "awsjoindevops-locking-dev"
+    dynamodb_table = "awsjoindevops-locking-prod"
     
   }
 }
