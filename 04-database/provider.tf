@@ -9,7 +9,7 @@ terraform {
 
   backend "s3" {
     bucket = "awsjoindevops-state-prod"
-    key    = "databases"
+    key    = "database"
     region = "us-east-1"
     dynamodb_table = "awsjoindevops-locking-prod"
     

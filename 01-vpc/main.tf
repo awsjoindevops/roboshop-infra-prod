@@ -6,6 +6,7 @@ module "roboshop" {
     environment = var.environment
     common_tags = var.common_tags
     vpc_tags = var.vpc_tags
+    vpc_cidr = var.vpc_cidr
 
     #Public subnet
     public_subnet_cidr = var.public_subnet_cidr
