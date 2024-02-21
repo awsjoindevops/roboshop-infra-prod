@@ -1,20 +1,15 @@
-    pipeline {
+pipeline {
     agent {
         node {
-            label 'AGENT-1'           
+            label 'AGENT-1'
         }
     }
-    environment { 
-            GREETING='HELLo JENKINS.'
-        }
     options {
-            // Timeout counter starts AFTER agent is allocated
-            timeout(time: 1, unit: 'HOURS')
-            disableConcurrentBuilds()
-             ansiColor('xterm')
-        }
-
-
+        ansiColor('xterm')
+        // timeout(time: 1, unit: 'HOURS')
+        // disableConcurrentBuilds()
+    }
+    // build
     stages {
         stage('VPC') {
             steps {
@@ -25,7 +20,6 @@
                 """
             }
         }
-
         stage('SG') {
             steps {
                 sh """
@@ -35,7 +29,6 @@
                 """
             }
         }
-       
         stage('VPN') {
             steps {
                 sh """
@@ -45,8 +38,7 @@
                 """
             }
         }
-        
-       stage('DB ALB') {
+        stage('DB ALB') {
             parallel {
                 stage('DB') {
                     steps {
@@ -68,7 +60,7 @@
                 }
             }
         }
-        
+       
     }
     // post build
     post { 
